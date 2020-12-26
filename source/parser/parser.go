@@ -260,11 +260,11 @@ func isFile(name string) bool {
 	return false
 }
 
-// isExec reports whether the provided path ends
-// on a valid executable application.
+// isExec reports whether the provided path ends with a valid
+// executable file (application).
 //
-// Note: the author is unsure whether this works
-// with MacOS's .app files as he does not own a Mac!
+// Note: the author is unsure whether this affects apps on
+// MacOS, as he does not own one!
 func isExec(name string) bool {
 	return filepath.Ext(name) == ".exe"
 }
