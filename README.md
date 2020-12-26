@@ -1,5 +1,5 @@
 # bundles
-A bundle is, as defined by the Oxford Languages Dictionary, "a collection of things or quantity of material tied or wrapped up together." And as you will see, reading further, the program that resides in this repository is quite the same.
+A bundle is, as defined by the Oxford Languages Dictionary, "a collection of things or quantity of material tied or wrapped up together." And as you will see, reading further, the program that resides in this repository achieves quite the same thing.
 
 Bundles launches multiple apps, URLs, files and shell commands (specified by you) in groups/clusters called, well, bundles. This program is aimed at making the process of launching the same common applications that you use everyday painless by allowing you to launch all of them with a **single command**, instead of opening each individually.
 
