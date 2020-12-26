@@ -22,7 +22,7 @@ import (
 // The executable resides in the current directory, with it's
 // name the same as that of the file at the provided path*
 //
-// * the first word of the file's name
+// *the first word of the file's name
 func Parse(path string) {
 	name := strings.ReplaceAll(filepath.Base(path),
 		     filepath.Ext(path), "")
@@ -46,9 +46,8 @@ func Read(name string) []string {
 	return ss
 }
 
-// An Item is an Action + Value pair.
-// The prescribed action is executed (e.g. app is launched)
-// using the given value.
+// An Item is an Action, Value pair.
+// It contains instructions for launching a single action.
 type Item struct {
 	// Can either be "app", "url", "file" or "shell".
 	Action	string
@@ -56,10 +55,10 @@ type Item struct {
 	Value	string
 }
 
-// A Bundle is a single launch-able/executable unit of code
-// in Bundles.
+// A Bundle is a single launchable unit of code in Bundles.
+//
 // It consists of a slice of Item, which are the actions
-// launched when the Bundle, using it's Label, is executed.
+// launched when the Bundle is executed, and a Label.
 type Bundle struct {
 	// Name of the bundle.
 	Label	string
@@ -77,8 +76,7 @@ const (
 // analysed Bundles.
 //
 // It is a pseudo-lexer, if you will, that performs the functions
-// of a lexer, breaking down the source code into Bundle-s and
-// Label-s to be compiled.
+// of a lexer, breaking down the source code into Bundle-s.
 //
 // Errors out in case of syntactic errors, and if invalid paths
 // (according to context and system) are provided.
@@ -187,12 +185,11 @@ func main() {
 //
 // It does so by transpiling the Bundle-s into idiomatic Go code
 // that is then built, "go build ...", in the current directory.
-// The new executable takes the name of the file provided at the
-// start (final).
+// The new executable takes the name of the file provided.
 //
 // Errors out if it is unable to create, build or access
 // the ./temp/temp.go file.
-func Compile(bundles []Bundle, exe string) {
+func Compile(bundles []Bundle, name string) {
 	if len(bundles) == 0 { return }
 
 	var addition string
@@ -218,7 +215,7 @@ func Compile(bundles []Bundle, exe string) {
 	err = ioutil.WriteFile("./temp/temp.go", bcode, 0777)
 	report(err, "Unable to write to ./temp/temp.go.")
 
-	err = exec.Command("go", "build", "-o", exe, "./temp/temp.go").Run()
+	err = exec.Command("go", "build", "-o", name, "./temp/temp.go").Run()
 	report(err, "Unable to compile ./temp/temp.go.")
 }
 
@@ -248,7 +245,7 @@ func strip(s string) string {
 	return s
 }
 
-// isFile reports whether the provided path with a valid and
+// isFile reports whether the provided path points to a valid and
 // accessible file.
 func isFile(name string) bool {
 	info, err := os.Stat(name)
@@ -260,24 +257,24 @@ func isFile(name string) bool {
 	return false
 }
 
-// isExec reports whether the provided path ends with a valid
-// executable file (application).
+// isExec reports whether the provided path points to a valid
+// executable file (or application).
 //
-// Note: the author is unsure whether this affects apps on
-// MacOS, as he does not own a Mac!
+// Note: the author is unsure whether this works with apps on
+// MacOS or Linux, as he has no devices with these OSs.
 func isExec(name string) bool {
 	return filepath.Ext(name) == ".exe"
 }
 
-// isURL uses regular expression (it's long and ugly!) to report
+// isURL uses a regular expression (albeit long and ugly) to report
 // whether the provided URL is valid or not.
 func isURL(name string) bool {
 	urlPattern := "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
 	return matches(urlPattern, name)
 }
 
-// SyntaxErrors gives the location and Bundle, most of
-// the time, of syntactic errors in the provided source code.
+// SyntaxErrors gives the location and Bundle of the syntactic
+// errors in the provided source code.
 func SyntaxError(msg string, bundle Bundle, i int) {
 	if bundle.Label != "" {
 		format := "SyntaxError: in %s, on line %d\n\t%s\n"
