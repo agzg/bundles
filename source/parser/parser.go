@@ -264,7 +264,7 @@ func isFile(name string) bool {
 // executable file (application).
 //
 // Note: the author is unsure whether this affects apps on
-// MacOS, as he does not own one!
+// MacOS, as he does not own a Mac!
 func isExec(name string) bool {
 	return filepath.Ext(name) == ".exe"
 }
@@ -289,8 +289,8 @@ func SyntaxError(msg string, bundle Bundle, i int) {
 	os.Exit(1)
 }
 
-// ValueErrors gives the location and Bundle, most of
-// the time, of syntactic errors in the provided source code.
+// ValueErrors gives the location and Bundle of invalid values 
+// in the provided source code.
 func ValueError(msg string, bundle Bundle, i int) {
 	if bundle.Label != "" {
 		format := "ValueError: in %s, on line %d\n\t%s\n"
@@ -302,9 +302,8 @@ func ValueError(msg string, bundle Bundle, i int) {
 	os.Exit(1)
 }
 
-// IllegalChar gives the location and Bundle, most of
-// the time, of any invalid characters in the provided source
-// code.
+// IllegalChar gives the location and Bundle of any invalid 
+// characters in the provided source code.
 func IllegalChar(msg string, bundle Bundle, i int) {
 	if bundle.Label != "" {
 		format := "IllegalChar: in %s, on line %d\n\t%s\n"
