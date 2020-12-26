@@ -37,7 +37,7 @@ Examples:
 
 Comments, in the Bundles syntax, can **not** be inline. The syntax for comments is the same as that of the Python programming language, a "#" symbol, without the quotes, followed by whatever text you want to write.
 
-Finally, it is recommended that you indent actions within a bundle, leaving an empty line between each declared bundle (yes, there can be multiple within a file). Below is an example of a bundles files ready to be compiled:
+Finally, it is recommended that you indent actions within a bundle, leaving an empty line between each declared bundle (yes, there can be multiple within a file). Below is an example of a bundles file ready to be compiled:
 
 ```
 programming:
@@ -67,7 +67,7 @@ Go ahead and run, `./filename example_bundle` and voilà, all the specified acti
 
 ### Errors
 **Upon compilation:**
-SyntaxErrors, ValueErrors, and IllegalChars will tell you if your source code does not follow [the specified syntax](#syntax), has invalid values (paths and/or URLs), or contains a  "\`" (backtick) characters, respectively.
+SyntaxErrors, ValueErrors, and IllegalChars will tell you if your source code does not follow [the specified syntax](#syntax), has invalid values (paths and/or URLs), or contains a  "\`" (backtick) character, respectively.
 
 **Upon execution:**
 If you see a message like, "Bundle does not exist", it means that either there is no bundle labelled with the argument you just supplied, or you did not supply any arguments at all! As mentioned, the syntax for executing a bundle (.exe) is, `./name-of-executable-file name-of-valid-label`
