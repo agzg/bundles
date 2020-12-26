@@ -1,4 +1,4 @@
-// Copyright 2020 @aliazam (Alee). All Rights Reserved.
+// Copyright 2020 Ali Azam (Alee). All Rights Reserved.
 // Use of this source code is governed under the MIT license
 // that can be found in the LICENSE file.
 
