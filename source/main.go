@@ -17,7 +17,7 @@ func main() {
 	if len(os.Args) < 2 || len(os.Args) > 2 {
 		fmt.Println(`Usage:
 
-$ go run main.go filename (optional: clean)
+$ go run main.go filename
   filename 	the name of the file to be compiled.`)
 		return
 	}
