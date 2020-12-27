@@ -18,8 +18,7 @@ func main() {
 		fmt.Println(`Usage:
 
 $ go run main.go filename (optional: clean)
-  filename 	the name of the file to be compiled.
-  clean		(optional) deletes temporary files created during compilation.`)
+  filename 	the name of the file to be compiled.`)
 		return
 	}
 	parser.Parse(os.Args[1])
