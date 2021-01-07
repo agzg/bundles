@@ -212,7 +212,7 @@ func Compile(bundles []Bundle, name string) {
 	err = ioutil.WriteFile("./temp/temp.go", bcode, 0777)
 	report(err, "Unable to write to ./temp/temp.go.")
 
-	err = exec.Command("go", "build", "-o", '"' + name + '"', "./temp/temp.go").Run()
+	err = exec.Command("go", "build", "-o", name, "./temp/temp.go").Run()
 	report(err, "Unable to compile ./temp/temp.go.")
 }
 
