@@ -20,14 +20,11 @@ import (
 // the file at the given path.
 //
 // The executable resides in the current directory, with it's
-// name the same as that of the file at the provided path*
-//
-// *the first word of the file's name
+// name the same as that of the file at the provided path.
 func Parse(path string) {
 	name := strings.ReplaceAll(filepath.Base(path),
 		     filepath.Ext(path), "")
-	name = strings.Fields(name)[0]
-	Compile(Tokenize(Read(path)), name)
+	Compile(Tokenize(Read(path)), name + ".exe")
 }
 
 // Read reads the contents of the file at the given path and
