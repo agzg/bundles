@@ -12,7 +12,7 @@ A bundle consists of a "label", the name of the bundle used to refer to it, and 
 ## Getting Started
 ### Requirements
 Bundles requires the following:
-* An installation of [GoLang](https://golang.org/dl/) >= 1.15
+* An installation of [Golang](https://golang.org/dl/) >= 1.15
 * `"github.com/skratchdot/open-golang/open"`
 
 ### Usage
@@ -59,10 +59,6 @@ Programming:
 ```
 
 ## Execution
-🔪🩸💀
-
-No, not that kind of execution! This section covers how you go about compiling and running a Bundles script.
-
 Go to the root directory and run, `go run main.go filename.txt` replacing "filename.txt" with the path to the file where you have written your Bundles script.
 
 Assuming you followed [the syntax section](#syntax) properly, you should see an executable file in the current directory. It's name will be the same as that of the script file supplied, in my case "filename.exe".
@@ -81,7 +77,3 @@ MIT
 
 ## Credits
 An especial thanks to [@Abdul-Muiz-Iqbal](https://github.com/Abdul-Muiz-Iqbal) whose request for funky project ideas led to this one.
-
-Feel free to open up issues for suggestions, improvements or bugs.
-
-**written by [@aliazam (Alee)](https://www.github.com/aliazam)**
