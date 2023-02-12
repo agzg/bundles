@@ -1,11 +1,8 @@
 # bundles
-Bundles is a transcompiler, with [it's own syntax](#syntax), that allows you to launch clusters of routine applications. It transpiles the source file into Go code, creating a temporary file (fittingly "./temp/temp.go") that is then built using the native Go compiler (using the "build" command) thus creating an executable, the arguments to which launch the clusters of applications, called bundles.
-
-### Wait, what?..
 Bundles allows you to gather the websites, applications, commands, and files that you frequently use, and launch them with a single command (using an executable).
 
 ### Details
-Bundles is a transcompiler that transpiles (translates) source code (written in the [Bundles syntax](#syntax)) into idiomatic Go code and builds the file, thus creating an executable. A single executable can (and should!) house multiple 'bundles' or clusters of the applications that you want to launch. 
+Bundles is a transcompiler that transpiles (translates) source code (written in the [Bundles syntax](#syntax)) into idiomatic Go code and builds the file, thus creating an executable. A single executable can house multiple 'bundles' or clusters of the applications that you want to launch. 
 
 A bundle consists of a "label", the name of the bundle used to refer to it, and "items", the specified applications that you want to launch or execute.
 
@@ -13,10 +10,10 @@ A bundle consists of a "label", the name of the bundle used to refer to it, and 
 ### Requirements
 Bundles requires the following:
 * An installation of [Golang](https://golang.org/dl/) >= 1.15
-* `"github.com/skratchdot/open-golang/open"`
+* `go get github.com/skratchdot/open-golang/open`
 
 ### Usage
-Download the "github.com/skratchdot/open-golang/open" package using `go get "github.com/skratchdot/open-golang/open"`, then download the source code (or clone the repository using `git clone https://github.com/aliazam/bundles.git`). Ensure you also have GoLang installed on your system.
+Download the "github.com/skratchdot/open-golang/open" package using `go get "github.com/skratchdot/open-golang/open"`, then download the source code (or clone the repository using `git clone https://github.com/agzg/bundles.git`).
 
 Read [the syntax section](#syntax) to learn how to code in Bundles, and [the execution section](#execution) to learn how to compile the said script.
 
@@ -39,19 +36,17 @@ Below is an example of what a typical Bundles script should look like:
 
 ```
 social_media:
-  # I am not very social!
   url, https://www.facebook.com
   url, https://www.instagram.com
   url, https://www.reddit.com
   
-Books:
+books:
   # Books I am reading right now.
   file, "D:\Books\The Art of Assembly Language.pdf"
   file, "D:\Books\Black Beauty.pdf"
   url, https://www.goodreads.com
   
-Programming:
-  # Things I need to get started.
+code:
   app, "C:\Program Files\VSC\Code.exe"
   app, "C:\Program Files\GoLand\goland.exe"
   url, https://www.github.com
@@ -66,14 +61,10 @@ Assuming you followed [the syntax section](#syntax) properly, you should see an 
 Go ahead and run, `./filename example_bundle` and voilà, all the specified actions under the `example_bundle` bundle execute!
 
 ### Errors
-**Upon compilation:**
-SyntaxErrors, ValueErrors, and IllegalChars will tell you if your source code does not follow [the specified syntax](#syntax), has invalid values (paths and/or URLs), or contains a  "\`" (backtick) character, respectively.
-
-**Upon execution:**
-If you see a message like, "Bundle does not exist", it means that either there is no bundle labelled with the argument you just supplied, or you did not supply any arguments at all! As mentioned, the syntax for executing a bundle (.exe) is, `./name-of-executable-file name-of-declared-label`
+SyntaxErrors, ValueErrors, and IllegalChars will tell you if your source code does not follow [the specified syntax](#syntax), has invalid values (paths and/or URLs), or contains a  \` (backtick character), respectively.
 
 ## License
-MIT
+[MIT](https://github.com/agzg/bundles/blob/main/LICENSE)
 
 ## Credits
-An especial thanks to [@Abdul-Muiz-Iqbal](https://github.com/Abdul-Muiz-Iqbal) whose request for funky project ideas led to this one.
+An especial thanks to [mbyx](https://github.com/mbyx) whose request for funky project ideas led to this one.
